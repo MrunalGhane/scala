@@ -1,0 +1,69 @@
+Mrunal
+
+
+
+db.mobile.insertdb.mobileShop.insert([{ mobileName:"vivo x5", brandName:"vivo", ram:8, rom:64, ratedBy:[{firstName:"Rohit", lastName:"deshmukh", rating:3}, {firstName:"vihan",lastName:"rajan", rating:4}]}])
+BulkWriteResult({
+	"writeErrors" : [ ],
+	"writeConcernErrors" : [ ],
+	"nInserted" : 1,
+	"nUpserted" : 0,
+	"nMatched" : 0,
+	"nModified" : 0,
+	"nRemoved" : 0,
+	"upserted" : [ ]
+})
+
+
+
+
+> db.customer.insert([{
+... customerName:{firstName:"anannya",lastName:"kulkarni"},productBought:{mobileName:"vivo x5",brandName:"vivo"}}])
+BulkWriteResult({
+	"writeErrors" : [ ],
+	"writeConcernErrors" : [ ],
+	"nInserted" : 1,
+	"nUpserted" : 0,
+	"nMatched" : 0,
+	"nModified" : 0,
+	"nRemoved" : 0,
+	"upserted" : [ ]
+ Q1).{a}
+ 
+
+  db.mobile.aggregate([{$match: {$and: [{ram: 8},{rom: 64}]}}, {$group:{_id: {mobileName: "$mobileName"}}}]).pretty();
+ 
+ db.mobile.aggregate([{},{}$group:{_id:{brandName:"$brandName"}}]),db.mobile.aggregate([{$sort:{"rating.rating":-1}},{$group:{_id:{brandName:"$brandName"}}},{$limit:1}]).pretty();
+
+
+
+Q1).{b} *********run****************
+
+
+db.customer.aggregate([{$match:
+... {"productBought.mobileName":"samsung x5"}},
+... {$group:{_id:
+... {customerName:"$customerName"}}}])
+{ "_id" : { "customerName" : { "firstName" : "pooja", "lastName" : "damale" } } }
+
+
+Q4){d}********************Run*************************
+
+
+
+
+> db.customer.aggregate([{$match:{"productBought.mobileName":"poco m2"}},{$sort:{"customerName.firstName":-1}}]).pretty();
+{
+	"_id" : ObjectId("63b7c4c08deb3eda15e4b3fa"),
+	"customerName" : {
+		"firstName" : "aradhya",
+		"lastName" : "shinde"
+	},
+	"productBought" : {
+		"mobileName" : "poco m2",
+		"brandName" : "mi"
+	}
+}
+
+
+
